@@ -1,0 +1,68 @@
+import java.util.*;
+
+class node{
+	int data;
+	node left;
+	node right;
+	
+	public node(int data) {
+		this.data=data;
+		this.left=null;
+		this.right=null;
+	}
+}
+
+ class BinaryTree{
+	public node create() {
+		Scanner s=new Scanner(System.in);
+		node root = null;
+		System.out.println("Enter data: ");
+		int data = s.nextInt();
+		
+		if(data == -1) return null;
+		
+		root = new node(data);
+		
+		System.out.println("Enter left for " + data);
+		root.left = create();
+		
+		System.out.println("Enter right for "+ data);
+		root.right = create();
+		
+		return root;
+		}
+	
+	//1.recursive inorder traversal
+	public void recurInorder(node root) {
+		if(root == null) return;
+		
+		recurInorder(root.left);
+		System.out.print(root.data+" ");
+		recurInorder(root.right);
+	}
+	
+	//2.recursive preorder traversal
+		public void recurPreorder(node root) {
+			if(root!=null) {
+				System.out.println("null node");
+				return;
+			}
+			
+			System.out.println(root.data);
+			recurPreorder(root.left);
+			recurPreorder(root.right);
+		}
+		
+	//
+		
+}
+
+	
+public class TreeCreate {
+	public static void main(String args[]) {
+		
+		BinaryTree b=new BinaryTree();
+		node root = b.create();//because create returns the root node
+		b.recurInorder(root);
+	
+}}
